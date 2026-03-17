@@ -3,6 +3,6 @@ module com.example.eclipsedsun {
     requires javafx.fxml;
 
 
-    opens com.example.eclipsedsun to javafx.fxml;
-    exports com.example.eclipsedsun;
+    opens com.eclipsedsun.game to javafx.fxml;
+    exports com.eclipsedsun.game;
 }

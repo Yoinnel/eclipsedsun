@@ -1,9 +1,9 @@
-package com.example.eclipsedsun;
+package com.eclipsedsun.game;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class EclipsedSunController {
     @FXML
     private Label welcomeText;
 
