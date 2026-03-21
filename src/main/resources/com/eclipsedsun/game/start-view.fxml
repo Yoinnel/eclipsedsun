@@ -5,7 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.text.Font?>
 <VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.StartController">
+
+    <Label fx:id="welcomeText" ellipsisString="EL SOL ECLIPSADO" prefHeight="17.0" prefWidth="3.0" text="EL SOL ECLIPSADO" textAlignment="CENTER" textFill="RED">
+        <font>
+            <Font size="25.0" />
+        </font></Label>
 
     <Label text="Ingrese palabra secreta" />
 

@@ -1,3 +1,12 @@
+/**
+ * This class contains the controllers of the main window of the game
+ *
+ * @author Estaban Granada Salamanca
+ * @author Yoinnel Gabriel Martinez Brito
+ *
+ * @version 1.0
+ * @since 2026
+ */
 
 package com.eclipsedsun.game;
 
@@ -9,15 +18,23 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
 public class StartController {
+
+    /**
+     * These are the resources used on game main window
+     */
     @FXML
     private Label lblError;
 
     @FXML
     private TextField txtPalabra;
 
+    /**
+     * This function starts the game after the user type the secret word
+     */
     @FXML
     protected void iniciarJuego() {
 
+        // This made the game recognize all the letters as low cases and erase de blank spaces at start and end of the word
         String palabra = txtPalabra.getText().trim().toLowerCase();
 
         // Verify that the secret word it's not empty
@@ -26,24 +43,25 @@ public class StartController {
             return;
         }
 
-        // Verify that the secret word have no spaces
+        // Verify that the secret word have no any spaces inside
         if (palabra.contains(" ")) {
             lblError.setText("La palabra no puede tener espacios");
             return;
         }
 
-        // Verify that the secret word have between 6 and 12 letters of lenght
+        // Verify that the secret word have between 6 and 12 letters of length
         if (palabra.length() < 6 || palabra.length() > 12) {
             lblError.setText("La palabra debe tener entre 6 y 12 letras");
             return;
         }
 
-        // Verify that the secret word only have letters
+        // Verify that the secret word only have letters from "a" to "z" and "áéíóúñäëïöüÄËÏÖÜ" are exceptions
         if (!palabra.matches("[a-záéíóúñäëïöüÄËÏÖÜ]+")) {
             lblError.setText("La palabra solo puede tener letras");
             return;
         }
 
+        // If everything it's right, starts the game
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/eclipsedsun/game/game-view.fxml")
