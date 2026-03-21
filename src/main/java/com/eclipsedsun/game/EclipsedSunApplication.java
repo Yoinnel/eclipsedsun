@@ -12,7 +12,7 @@ public class EclipsedSunApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(EclipsedSunApplication.class.getResource("start-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setTitle("Eclipsed Sun");
+        stage.setTitle("El Sol Eclipsado");
         stage.setScene(scene);
         stage.show();
     }

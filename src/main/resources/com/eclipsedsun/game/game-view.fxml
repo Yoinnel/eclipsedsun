@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="267.0" prefWidth="300.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.EclipsedSunController">
+<VBox alignment="CENTER" prefHeight="720" prefWidth="1280" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.EclipsedSunController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -19,7 +19,7 @@
       </font></Label>
    <ImageView fx:id="imagenSol" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    <HBox fx:id="contenedorLetras" prefHeight="100.0" prefWidth="200.0" />
-    <Button fx:id="btnAyuda" onAction="#onHelloButtonClick" text="Ayuda!" />
+    <Button fx:id="btnPista" onAction="#onHelloButtonClick" text="Pista" />
    <Label fx:id="lblMensaje"  prefHeight="40.0" prefWidth="300.0" text="" textAlignment="CENTER" textFill="RED"  wrapText="true">
       <font>
          <Font size="18.0" />

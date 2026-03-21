@@ -21,49 +21,56 @@ public class EclipsedSunController {
     private HBox contenedorLetras;
 
     @FXML
-    private Button btnAyuda;
+    private Button btnPista;
 
     @FXML
     private Label lblMensaje;
 
     @FXML
     public void initialize() {
-        crearCampos("computador");
+        crearCampos(palabraSecreta);
         imagenSol.setImage(new Image(
                 getClass().getResourceAsStream("/com/eclipsedsun/game/sol0.png")
         ));
     }
-    private boolean usandoAyuda = false;
+    private boolean usandoPista = false;
 
     @FXML
     protected void onHelloButtonClick() {
-        usandoAyuda = true;
-        nivelAyuda++;
+        usandoPista = true;
+        nivelPista++;
 
-        switch (nivelAyuda) {
+        switch (nivelPista) {
 
             case 1:
-                lblMensaje.setText("construido por primera vez entre 1943 y 1945 en Estados Unidos,");
+                revelarLetra();
+                lblMensaje.setText("Usos restantes del botón de pistas 2/3");
                 break;
 
             case 2:
-                lblMensaje.setText("Es un objeto tecnológico");
+                revelarLetra();
+                lblMensaje.setText("Usos restantes del botón de pistaspistas 1/3");
                 break;
 
             case 3:
                 revelarLetra();
-                lblMensaje.setText("Te revelamos una letra");
+                lblMensaje.setText("Usos restantes del botón de pistas 0/3");
                 break;
 
             default:
-                lblMensaje.setText("No hay más ayudas, sorry");
+                lblMensaje.setText("No puedes usar más pistas");
                 break;
         }
     }
 
     private void revelarLetra() {
 
-        for (int i = 0; i < palabraSecreta.length(); i++) {
+        int longitud = palabraSecreta.length();
+        int intentos = 0;
+
+        while (intentos < 12) {
+
+            int i = (int) (Math.random() * longitud);
 
             TextField campo = (TextField) contenedorLetras.getChildren().get(i);
 
@@ -73,6 +80,8 @@ public class EclipsedSunController {
                 campo.setEditable(false);
                 break;
             }
+
+            intentos++;
         }
     }
 
@@ -87,16 +96,36 @@ public class EclipsedSunController {
         imagenSol.setImage(imagen);
     }
 
-    private String palabraSecreta = "computador";
+    private String palabraSecreta = "";
     private int errores = 0;
-    private int nivelAyuda = 0;
+    private int nivelPista = 0;
 
 
     private void verificarDerrota() {
 
         if (errores >= 5) {
-            lblMensaje.setText("Perdistes :(");
+            lblMensaje.setText("Perdiste :(");
             contenedorLetras.setDisable(true);
+        }
+    }
+
+    // This quit the accents in letters after type the secret word to allow that the user don't must use it
+    private char normalizarLetra(char c) {
+
+        c = Character.toLowerCase(c);
+
+        switch (c) {
+            case 'á': return 'a';
+            case 'ä': return 'a';
+            case 'é': return 'e';
+            case 'ë': return 'e';
+            case 'í': return 'i';
+            case 'ï': return 'i';
+            case 'ó': return 'o';
+            case 'ö': return 'o';
+            case 'ú': return 'u';
+            case 'ü': return 'u';
+            default: return c;
         }
     }
 
@@ -121,14 +150,26 @@ public class EclipsedSunController {
                     return;
                 }
 
-                if (!newText.isEmpty() && !usandoAyuda) {
+                if (!newText.isEmpty() && !usandoPista) {
 
                     char letra = newText.toLowerCase().charAt(0);
-                    if (palabraSecreta.charAt(index) == letra) {
-                        lblMensaje.setText("Correcto");
-                        campo.setEditable(false); //
+
+                    // Verify that the typed it's a Letter
+                    if (!Character.isLetter(letra)) {
+                        lblMensaje.setText("Solo puede ingresar letras");
+                        campo.setText(""); // Clean the text field
+                        return;
+                    }
+
+                    // Verify if the letter it's correct or no
+                    char letraUsuario = normalizarLetra(letra);
+                    char letraSecreta = normalizarLetra(palabraSecreta.charAt(index));
+
+                    if (letraSecreta == letraUsuario) {
+                        lblMensaje.setText("La letra es correcta!");
+                        campo.setEditable(false);
                     } else {
-                        lblMensaje.setText("Incorrecto");
+                        lblMensaje.setText("La letra es incorrecta!");
                         errores++;
                         actualizarEclipse();
                         verificarDerrota();

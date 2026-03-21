@@ -20,9 +20,27 @@ public class StartController {
 
         String palabra = txtPalabra.getText().trim().toLowerCase();
 
+        // Verify that the secret word it's not empty
+        if (palabra.isEmpty()) {
+            lblError.setText("Ingresa una palabra para que sea la palabra secreta");
+            return;
+        }
 
-        if (!palabra.equals("iniciar")) {
-            lblError.setText("Debes escribir la palabra clave");
+        // Verify that the secret word have no spaces
+        if (palabra.contains(" ")) {
+            lblError.setText("La palabra no puede tener espacios");
+            return;
+        }
+
+        // Verify that the secret word have between 6 and 12 letters of lenght
+        if (palabra.length() < 6 || palabra.length() > 12) {
+            lblError.setText("La palabra debe tener entre 6 y 12 letras");
+            return;
+        }
+
+        // Verify that the secret word only have letters
+        if (!palabra.matches("[a-záéíóúñäëïöüÄËÏÖÜ]+")) {
+            lblError.setText("La palabra solo puede tener letras");
             return;
         }
 
@@ -33,8 +51,9 @@ public class StartController {
 
             Scene scene = new Scene(loader.load());
 
+            // This does that the word typed become the secret word
             EclipsedSunController controller = loader.getController();
-            controller.crearCampos("computador");
+            controller.crearCampos(palabra);
 
             Stage stage = (Stage) txtPalabra.getScene().getWindow();
             stage.setScene(scene);
