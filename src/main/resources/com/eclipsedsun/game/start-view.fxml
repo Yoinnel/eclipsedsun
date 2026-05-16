@@ -1,24 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.StartController">
+<VBox alignment="CENTER" minHeight="600.0" minWidth="800.0" spacing="20" style="-fx-background-color: #DEE3FF;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.StartController">
 
-    <Label fx:id="welcomeText" ellipsisString="EL SOL ECLIPSADO" prefHeight="17.0" prefWidth="3.0" text="EL SOL ECLIPSADO" textAlignment="CENTER" textFill="RED">
+    <Label fx:id="welcomeText" ellipsisString="EL SOL ECLIPSADO" prefHeight="17.0" prefWidth="3.0" text="EL SOL ECLIPSADO" textAlignment="CENTER">
         <font>
-            <Font size="25.0" />
-        </font></Label>
+            <Font name="Lilita One" size="70.0" />
+        </font>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <textFill>
+         <RadialGradient centerX="0.5220994475138121" centerY="0.5" cycleMethod="REFLECT" focusAngle="-120.96" focusDistance="0.11494252873563227" radius="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="1.0" green="0.7490196228027344" blue="0.06666667014360428" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="1.0" green="0.4000000059604645" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+      </textFill></Label>
 
-    <Label text="Ingrese palabra secreta" />
+    <Label text="Ingresa la palabra secreta" textAlignment="CENTER">
+      <font>
+         <Font name="Comic Sans MS" size="20.0" />
+      </font></Label>
 
-    <TextField fx:id="txtPalabra" prefHeight="26.0" prefWidth="230.0" />
+    <TextField fx:id="txtPalabra" maxHeight="50.0" maxWidth="230.0" minHeight="50.0" minWidth="230.0" prefHeight="50.0" prefWidth="230.0">
+      <opaqueInsets>
+         <Insets left="100.0" right="100.0" />
+      </opaqueInsets>
+      <VBox.margin>
+         <Insets left="100.0" right="100.0" />
+      </VBox.margin>
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font></TextField>
 
-    <Label fx:id="lblError" text="" textFill="red" />
+    <Label fx:id="lblError" text="" textFill="red">
+      <font>
+         <Font size="20.0" />
+      </font></Label>
 
-    <Button onAction="#iniciarJuego" text="Jugar" />
+    <Button fx:id="btnJugar" onAction="#iniciarJuego" text="Jugar" textAlignment="CENTER">
+      <VBox.margin>
+         <Insets bottom="100.0" />
+      </VBox.margin>
+      <font>
+         <Font name="Luckiest Guy Regular" size="25.0" />
+      </font>
+      <textFill>
+         <RadialGradient centerX="0.5220994475138121" centerY="0.5" cycleMethod="REFLECT" focusAngle="-120.96" focusDistance="0.11494252873563227" radius="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="1.0" green="0.4000000059604645" />
+                  </color>
+               </Stop>
+               <Stop offset="0.007662835249042145">
+                  <color>
+                     <Color red="1.0" green="0.4000000059604645" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="1.0" green="0.7490196228027344" blue="0.06666667014360428" />
+                  </color>
+               </Stop>
+            </stops>
+         </RadialGradient>
+      </textFill></Button>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 
 </VBox>

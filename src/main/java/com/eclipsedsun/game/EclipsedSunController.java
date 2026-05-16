@@ -19,7 +19,11 @@ import javafx.scene.layout.HBox;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+
+import java.awt.*;
 
 
 public class EclipsedSunController {
@@ -103,7 +107,10 @@ public class EclipsedSunController {
 
             TextField campo = new TextField();
             campo.setPrefWidth(40);
+            campo.setPrefHeight(40);
             campo.setAlignment(Pos.CENTER);
+            campo.setFont(Font.font(20));
+
 
             int index = i;
 
@@ -131,10 +138,14 @@ public class EclipsedSunController {
 
                     if (letraSecreta == letraUsuario) {
                         lblMensaje.setText("La letra es correcta!");
+                        lblMensaje.setTextFill(Color.GREEN);
+                        lblMensaje.setFont(Font.font("Comic Sans MS", 20));
                         campo.setEditable(false);
                         verificarVictoria();
                     } else {
                         lblMensaje.setText("La letra es incorrecta!");
+                        lblMensaje.setTextFill(Color.RED);
+                        lblMensaje.setFont(Font.font("Comic Sans MS", 20));
                         campo.setText("");
                         errores++;
                         actualizarEclipse();
@@ -160,22 +171,24 @@ public class EclipsedSunController {
 
             case 1:
                 revelarLetra();
-                lblMensaje.setText("Usos restantes del botón de pistas 2/3");
+                lblMensaje.setText("Usos restantes del botón de pistas: 2/3");
+                lblMensaje.setTextFill(Color.BLACK);
+                verificarVictoria();
                 break;
 
             case 2:
                 revelarLetra();
-                lblMensaje.setText("Usos restantes del botón de pistaspistas 1/3");
+                lblMensaje.setText("Usos restantes del botón de pistas: 1/3");
+                lblMensaje.setTextFill(Color.BLACK);
+                verificarVictoria();
                 break;
 
             case 3:
                 revelarLetra();
-                lblMensaje.setText("Usos restantes del botón de pistas 0/3");
-                break;
-
-            default:
                 lblMensaje.setText("No puedes usar más pistas");
+                lblMensaje.setTextFill(Color.BLACK);
                 btnPista.setDisable(true);
+                verificarVictoria();
                 break;
         }
         usandoPista = false;
@@ -286,10 +299,13 @@ public class EclipsedSunController {
 
             );
 
-            Scene scene = new Scene(loader.load(), 1280, 720);
-
             Stage stage = (Stage) btnReiniciar.getScene().getWindow();
+            Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+            double anchoActual = stage.getWidth();
+            double altoActual = stage.getHeight();
             stage.setScene(scene);
+            stage.setWidth(anchoActual);
+            stage.setHeight(altoActual);
 
         } catch (Exception e) {
             e.printStackTrace();

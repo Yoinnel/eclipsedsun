@@ -67,14 +67,18 @@ public class StartController {
                     getClass().getResource("/com/eclipsedsun/game/game-view.fxml")
             );
 
-            Scene scene = new Scene(loader.load());
+            // This avoid that the new scene doesn't change de window size
+            Stage stage = (Stage) txtPalabra.getScene().getWindow();
+            Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+            double anchoActual = stage.getWidth();
+            double altoActual = stage.getHeight();
+            stage.setScene(scene);
+            stage.setWidth(anchoActual);
+            stage.setHeight(altoActual);
 
             // This does that the word typed become the secret word
             EclipsedSunController controller = loader.getController();
             controller.crearCampos(palabra);
-
-            Stage stage = (Stage) txtPalabra.getScene().getWindow();
-            stage.setScene(scene);
 
         } catch (Exception e) {
             e.printStackTrace();

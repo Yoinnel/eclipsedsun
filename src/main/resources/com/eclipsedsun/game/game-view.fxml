@@ -1,29 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="720" prefWidth="1280" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.EclipsedSunController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+<VBox alignment="CENTER" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: #DEE3FF;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eclipsedsun.game.EclipsedSunController">
 
-    <Label fx:id="welcomeText" ellipsisString="EL SOL ECLIPSADO" prefHeight="17.0" prefWidth="3.0" text="EL SOL ECLIPSADO" textAlignment="CENTER" textFill="RED">
+    <Label fx:id="welcomeText" ellipsisString="EL SOL ECLIPSADO" text="EL SOL ECLIPSADO" textAlignment="CENTER">
       <font>
-         <Font size="25.0" />
-      </font></Label>
-   <ImageView fx:id="imagenSol" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-   <HBox fx:id="contenedorLetras" prefHeight="100.0" prefWidth="200.0" />
-    <Button fx:id="btnPista" onAction="#onPistaButtonClick" text="Pista" />
-    <Button fx:id="btnReiniciar" text="Volver a jugar" onAction="#volverInicio" visible="false"/>
-   <Label fx:id="lblMensaje"  prefHeight="40.0" prefWidth="300.0" text="" textAlignment="CENTER" textFill="RED"  wrapText="true">
-      <font>
-         <Font size="18.0" />
+         <Font name="Lilita One" size="70.0" />
       </font>
+      <textFill>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="1.0" green="0.7490196228027344" blue="0.06666667014360428" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="1.0" green="0.4000000059604645" />
+                  </color>
+               </Stop>
+            </stops>
+         </LinearGradient>
+      </textFill>
+      <VBox.margin>
+         <Insets left="100.0" right="100.0" top="20.0" />
+      </VBox.margin></Label>
+   <ImageView fx:id="imagenSol" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+      <VBox.margin>
+         <Insets left="100.0" right="100.0" />
+      </VBox.margin>
+      <viewport>
+         <Rectangle2D />
+      </viewport>
+      <rotationAxis>
+         <Point3D z="100.0" />
+      </rotationAxis></ImageView>
+   <Label fx:id="lblMensaje" text="" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font name="JetBrains Mono ExtraBold" size="20.0" />
+      </font>
+      <VBox.margin>
+         <Insets left="100.0" right="100.0" />
+      </VBox.margin>
    </Label>
+   <HBox fx:id="contenedorLetras" alignment="CENTER" fillHeight="false">
+      <VBox.margin>
+         <Insets left="100.0" right="100.0" />
+      </VBox.margin></HBox>
+    <Button fx:id="btnPista" onAction="#onPistaButtonClick" text="Pista">
+      <VBox.margin>
+         <Insets left="100.0" right="100.0" />
+      </VBox.margin>
+      <font>
+         <Font name="Luckiest Guy Regular" size="25.0" />
+      </font></Button>
+    <Button fx:id="btnReiniciar" onAction="#volverInicio" text="Volver a jugar" textAlignment="CENTER" visible="false">
+      <VBox.margin>
+         <Insets bottom="30.0" left="100.0" right="100.0" top="-10.0" />
+      </VBox.margin>
+      <font>
+         <Font name="Luckiest Guy Regular" size="25.0" />
+      </font></Button>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </VBox>
